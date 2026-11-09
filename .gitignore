@@ -1,0 +1,146 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Linker files
+*.ilk
+
+# Debugger Files
+*.pdb
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+*.so.*
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Build directories
+build/
+Build/
+build-*/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+install_manifest.txt
+compile_commands.json
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+*.swp
+
+# vcpkg
+vcpkg_installed/
+
+# debug information files
+*.dwo
+
+# test output & cache
+Testing/
+.cache/
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+.history/
+*.vsix
+
+# Visual Studio (IDE completo)
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.rsuser
+*.VC.db
+*.VC.VC.opendb
+*.ipch
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.psess
+*.vsp
+*.vspx
+*.sap
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+.idea_modules/
+
+# Carpetas de compilación de Visual Studio
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+[Bb]uild/
+[Bb]uilds/
+[Ll]og/
+[Ll]ogs/
+
+# Qt Creator
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.moc
+*.autosave
+CMakeLists.txt.user
+CMakeLists.txt.user.*
+*_plugin_import.cpp
+*_qmltyperegistrations.cpp
+.qmake.cache
+.qmake.stash
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+Makefile*
+*build-*
+build-*/
+*-build-*/
+.qtc_clangd/
+.qtcreator/
+*.qmlproject.user
+*.qmlproject.user.*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
