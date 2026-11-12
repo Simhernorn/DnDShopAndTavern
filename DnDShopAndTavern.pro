@@ -16,9 +16,11 @@ INCLUDEPATH += .
 # Input
 SOURCES += main.cpp \
 	mainwindow.cpp \
-	productfilterproxy.cpp
+	productfilterproxy.cpp \
+	tavernWindow.cpp
 QT += widgets
 
 HEADERS += \
 	mainwindow.h \
-	productfilterproxy.h
+	productfilterproxy.h \
+	tavernWindow.h
