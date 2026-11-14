@@ -9,4 +9,4 @@ fichero=$(ls *.pro)
 echo "QT += widgets" >> "$fichero"
 
 qmake
-make
+mingw32-make

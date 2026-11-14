@@ -1,9 +1,9 @@
 #include <QApplication>
-#include "tavernWindow.h"
+#include "mainwindow.h"
 
 int main(int argc, char * argv[]) {
 	QApplication app(argc,argv);
-	ProductWindow window;
-	window.show();
+	MainWindow * window = new MainWindow();
+	window->show();
 	return app.exec();
 }

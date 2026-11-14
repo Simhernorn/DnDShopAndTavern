@@ -1,5 +1,5 @@
-#ifndef TAVERNWINDOW_H
-#define TAVERNWINDOW_H
+#ifndef _TAVERNWINDOW_H_
+#define _TAVERNWINDOW_H_
 
 #include <QDialog>
 #include <QStandardItemModel>
@@ -23,6 +23,8 @@ private slots:
 
 private:
 	void setupProductos();
+	bool cargarProductosCSV(const QString &ruta);
+	static QStringList parseLineaCSV(const QString &linea);
 
 	QStandardItemModel *m_model = nullptr;
 	ProductFilterProxy *m_proxy = nullptr;

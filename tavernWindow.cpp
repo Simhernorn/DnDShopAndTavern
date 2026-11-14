@@ -6,6 +6,9 @@
 #include <QHeaderView>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QCoreApplication>
+#include <QFile>
+#include <QTextStream>
 #include <QDebug>
 
 TavernWindow::TavernWindow(QWidget *parent)
@@ -27,22 +30,94 @@ TavernWindow::TavernWindow(QWidget *parent)
 	setupProductos();
 }
 
+// Divide una línea CSV en campos (separador ',', admite campos entre comillas dobles)
+QStringList TavernWindow::parseLineaCSV(const QString &linea)
+{
+	QStringList campos;
+	QString actual;
+	bool entreComillas = false;
+
+	for (int i = 0; i < linea.size(); ++i) {
+		const QChar ch = linea.at(i);
+		if (entreComillas) {
+			if (ch == '"') {
+				if (i + 1 < linea.size() && linea.at(i + 1) == '"') {
+					actual += '"';   // comilla escapada ""
+					++i;
+				} else {
+					entreComillas = false;
+				}
+			} else {
+				actual += ch;
+			}
+		} else if (ch == '"') {
+			entreComillas = true;
+		} else if (ch == ',') {
+			campos << actual.trimmed();
+			actual.clear();
+		} else {
+			actual += ch;
+		}
+	}
+	campos << actual.trimmed();
+	return campos;
+}
+
+// Carga los productos desde un CSV con cabecera: nombre,categoria,precio
+bool TavernWindow::cargarProductosCSV(const QString &ruta)
+{
+	QFile file(ruta);
+	if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+		qWarning() << "No se pudo abrir el CSV:" << ruta << file.errorString();
+		return false;
+	}
+
+	QTextStream in(&file);
+	in.setEncoding(QStringConverter::Utf8);
+
+	bool primera = true;
+	int numLinea = 0;
+	while (!in.atEnd()) {
+		const QString linea = in.readLine();
+		++numLinea;
+
+		if (primera) {            // saltar la cabecera
+			primera = false;
+			continue;
+		}
+		if (linea.trimmed().isEmpty())
+			continue;
+
+		const QStringList campos = parseLineaCSV(linea);
+		if (campos.size() < 3) {
+			qWarning() << "Línea" << numLinea << "ignorada (faltan campos):" << linea;
+			continue;
+		}
+
+		bool ok = false;
+		const double precio = campos.at(2).toDouble(&ok);
+		if (!ok) {
+			qWarning() << "Línea" << numLinea << "ignorada (precio no válido):" << linea;
+			continue;
+		}
+
+		auto *pPrecio = new QStandardItem;
+		pPrecio->setData(precio, Qt::DisplayRole);   // número real -> ordena bien
+		m_model->appendRow({ new QStandardItem(campos.at(0)),
+							new QStandardItem(campos.at(1)),
+							pPrecio });
+	}
+	return true;
+}
+
 void TavernWindow::setupProductos(){
-	// --- Modelo (aquí cargas tus productos; ejemplo con datos de prueba) ---
+	// --- Modelo (productos cargados desde CSV) ---
 	m_model = new QStandardItemModel(0, 3, this);
 	m_model->setHorizontalHeaderLabels({"Nombre", "Categoría", "Precio"});
 
-	auto addProducto = [this](const QString &nombre, const QString &cat,
-							  double precio) {
-		auto *pPrecio = new QStandardItem;
-		pPrecio->setData(precio, Qt::DisplayRole);   // número real -> ordena bien
-		m_model->appendRow({ new QStandardItem(nombre),
-							new QStandardItem(cat),
-							pPrecio });
-	};
-	addProducto("Espada corta", "Armas", 29.90);
-	addProducto("Ratón inalámbrico",  "Periféricos", 15.50);
-	// ... el resto de tus productos
+	// El CSV se busca junto al ejecutable; cambia la ruta si lo tienes en otro sitio
+	const QString rutaCSV = QCoreApplication::applicationDirPath() + "/../taberna.csv";
+	cargarProductosCSV(rutaCSV);
 
 	// --- Proxy ---
 	m_proxy = new ProductFilterProxy(this);

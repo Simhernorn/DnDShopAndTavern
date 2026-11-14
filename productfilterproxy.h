@@ -1,5 +1,5 @@
-#ifndef PRODUCTFILTERPROXY_H
-#define PRODUCTFILTERPROXY_H
+#ifndef _PRODUCTFILTERPROXY_H_
+#define _PRODUCTFILTERPROXY_H_
 
 #include <QSortFilterProxyModel>
 
@@ -21,4 +21,4 @@ private:
 	QString m_text;
 };
 
-#endif
+#endif // _PRODUCTFILTERPROXY_H_
