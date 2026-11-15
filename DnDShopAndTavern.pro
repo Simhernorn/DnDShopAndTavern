@@ -14,10 +14,14 @@ INCLUDEPATH += .
 #DEFINES += QT_DISABLE_DEPRECATED_UP_TO=0x060000 # disables all APIs deprecated in Qt 6.0.0 and earlier
 
 # Input
-HEADERS += gestionarwindow.h mainwindow.h productfilterproxy.h tavernWindow.h
+HEADERS += gestionarwindow.h mainwindow.h productfilterproxy.h tavernWindow.h \
+	party.h \
+	player.h
 SOURCES += gestionarwindow.cpp \
            main.cpp \
            mainwindow.cpp \
+           party.cpp \
+           player.cpp \
            productfilterproxy.cpp \
            tavernWindow.cpp
 QT += widgets
