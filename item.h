@@ -1,5 +1,5 @@
-#ifndef ITEM_H
-#define ITEM_H
+#ifndef _ITEM_H_
+#define _ITEM_H_
 
 #include <qstring.h>
 
@@ -13,4 +13,4 @@ public:
 	QString *getItemName();
 };
 
-#endif // ITEM_H
+#endif // _ITEM_H_

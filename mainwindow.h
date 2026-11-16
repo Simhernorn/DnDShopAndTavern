@@ -9,13 +9,17 @@
 
 #include "tavernWindow.h"
 #include "gestionarwindow.h"
+#include "createpartywindow.h"
 
 class MainWindow : public QMainWindow
 {
 Q_OBJECT
 
 public:
-	QLabel *lblBienvenida;
+	bool partyCargada = false;
+	QLabel
+		*lblBienvenida,
+		*lblCargarParty;
 	QPushButton
 		*btnTaberna,
 		*btnTienda,
@@ -40,12 +44,22 @@ public:
 		*taberna;
 	GestionarWindow
 		*gestionar;
+	CreatePartyWindow
+		*crear;
 
 	MainWindow(QWidget *parent = nullptr);
 
 public slots:
 	void slotAbrirTaberna();
+	// void slotAbrirTienda();
+	// void slotAbrirEditarTaberna();
+	// void slotAbrirEditarTienda();
+	// void slotCargarParty();
+	// void slotGuardarParty();
 	void slotGestionarParty();
+	// void slotInventario();
+	void slotCrearParty();
+	// void slotSalir();
 };
 
 #endif // MAINWINDOW_H

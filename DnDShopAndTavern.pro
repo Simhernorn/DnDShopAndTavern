@@ -15,15 +15,19 @@ INCLUDEPATH += .
 
 # Input
 HEADERS += gestionarwindow.h mainwindow.h productfilterproxy.h tavernWindow.h \
+	createpartywindow.h \
 	item.h \
 	party.h \
-	player.h
+	player.h \
+	playerformwidget.h
 SOURCES += gestionarwindow.cpp \
+           createpartywindow.cpp \
            item.cpp \
            main.cpp \
            mainwindow.cpp \
            party.cpp \
            player.cpp \
+           playerformwidget.cpp \
            productfilterproxy.cpp \
            tavernWindow.cpp
 QT += widgets

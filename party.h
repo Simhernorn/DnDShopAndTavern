@@ -1,5 +1,5 @@
-#ifndef PARTY_H
-#define PARTY_H
+#ifndef _PARTY_H_
+#define _PARTY_H_
 
 class Party
 {
@@ -7,4 +7,4 @@ public:
 	Party();
 };
 
-#endif // PARTY_H
+#endif // _PARTY_H_

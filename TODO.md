@@ -62,10 +62,11 @@
 #ifndef _PLAYERFORMWIDGET_H_
 #define _PLAYERFORMWIDGET_H_
 
+#include <QWidget>
 #include <QLabel>
 #include <QLineEdit>
+#include <QComboBox>
 #include <QLayout>
-#include <qstring.h>
 
 class PlayerFormWidget : public QDialog
 {
@@ -87,10 +88,10 @@ public:
         *playerNameLayout
         *charismaGeneralLayout;
     QHBoxLayout
-        *mainLayout;
+        *mainLayout,
         *charismaInputLayout;
     QStringList
-        *modSymbols = {"+","-"};
+        modSymbols = {"+","-"};
 
     PlayerFormWidget(QWidget *parent = nullptr);
 };
@@ -141,9 +142,8 @@ PlayerFormWidget::PlayerFormWidget(QWidget *parent)
 ## GestionarWindow Dialog
 
 1. Dialog which will show the party members of the loaded party
-2. 2 QLabels, one for the character´s name, another for the player's name
-3. 2 QLineEdits, one for the character's name, another for the player's name
-4. 3 QPushButtons, one to delete a character (a confirmation will be prompted through ConfirmWindow), one to accept changes and the other to deny changes
+2. One PlayerFormWidget for each character in the party
+3. 3 QPushButtons, one to delete a character (a confirmation will be prompted through ConfirmWindow), one to accept changes and the other to deny changes
 
 ## ConfirmWindow Dialog
 
@@ -166,3 +166,5 @@ PlayerFormWidget::PlayerFormWidget(QWidget *parent)
 2. Will read the characters in the list and take their names, their player's names and the objects they have bought to then put them into the file
 
 ## LoadParty Functionality/Dialog
+
+1. Slot when accepted that looks up if MainWindow->partyCargada is false. If it is, turn it to true, delete the QLabel and turn the buttons on

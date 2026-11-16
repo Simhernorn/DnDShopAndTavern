@@ -5,15 +5,24 @@ MainWindow::MainWindow(QWidget *parent)
 {
 	lblBienvenida = new QLabel("Bienvenido/a!");
 	lblBienvenida->setAlignment(Qt::AlignCenter);
+	lblCargarParty = new QLabel("Por favor, carga o crea una party");
+	lblCargarParty->setAlignment(Qt::AlignCenter);
 
 	btnTaberna = new QPushButton("Taberna");
+	btnTaberna->setEnabled(false);
 	btnTienda = new QPushButton("Tienda");
+	btnTienda->setEnabled(false);
 	btnEditarTaberna = new QPushButton("Editar Taberna");
+	btnEditarTaberna->setEnabled(false);
 	btnEditarTienda = new QPushButton("Editar Tienda");
+	btnEditarTienda->setEnabled(false);
 	btnCargarParty = new QPushButton("Cargar Party");
 	btnGuardarParty = new QPushButton("Guardar Party");
+	btnGuardarParty->setEnabled(false);
 	btnGestionarParty = new QPushButton("Gestionar Party");
+	btnGestionarParty->setEnabled(false);
 	btnInventario = new QPushButton("Inventario");
+	btnInventario->setEnabled(false);
 	btnCrearParty = new QPushButton("Crear Party");
 	btnSalir = new QPushButton("Salir");
 
@@ -32,6 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 	principalLayout = new QVBoxLayout();
 	principalLayout->addWidget(lblBienvenida);
+	principalLayout->addWidget(lblCargarParty);
 	principalLayout->addLayout(tabernaTiendaLayout);
 	principalLayout->addLayout(editarLayout);
 	principalLayout->addLayout(cargarGuardarLayout);
@@ -90,12 +100,14 @@ MainWindow::MainWindow(QWidget *parent)
 			SIGNAL(clicked()),
 			this,
 			SLOT(slotInventario()));
+	*/
 
 	connect(btnCrearParty,
 			SIGNAL(clicked()),
 			this,
 			SLOT(slotCrearParty()));
 
+	/*
 	connect(btnSalir,
 			SIGNAL(clicked()),
 			this,
@@ -111,4 +123,9 @@ void MainWindow::slotAbrirTaberna() {
 void MainWindow::slotGestionarParty() {
 	gestionar = new GestionarWindow();
 	gestionar->show();
+}
+
+void MainWindow::slotCrearParty() {
+	crear = new CreatePartyWindow();
+	crear->show();
 }

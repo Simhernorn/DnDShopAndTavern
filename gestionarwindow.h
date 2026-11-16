@@ -1,15 +1,15 @@
 #ifndef _GESTIONARWINDOW_H_
 #define _GESTIONARWINDOW_H_
 
-#include <QVector>
 #include <QDialog>
 #include <QLayout>
 
-class GestionarWindow : public QDialog{
+class GestionarWindow : public QDialog
+{
 Q_OBJECT
 
 public:
-	GestionarWindow(QWidget *parent = NULL);
+	GestionarWindow(QWidget *parent = nullptr);
 
 public slots:
 	void slotEjemplo();
