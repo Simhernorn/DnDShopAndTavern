@@ -15,9 +15,11 @@ INCLUDEPATH += .
 
 # Input
 HEADERS += gestionarwindow.h mainwindow.h productfilterproxy.h tavernWindow.h \
+	item.h \
 	party.h \
 	player.h
 SOURCES += gestionarwindow.cpp \
+           item.cpp \
            main.cpp \
            mainwindow.cpp \
            party.cpp \

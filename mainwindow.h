@@ -24,12 +24,14 @@ public:
 		*btnCargarParty,
 		*btnGuardarParty,
 		*btnGestionarParty,
+		*btnInventario,
+		*btnCrearParty,
 		*btnSalir;
 	QHBoxLayout
 		*tabernaTiendaLayout,
 		*editarLayout,
 		*cargarGuardarLayout,
-		*gestionarSalirLayout;
+		*gestionarEInventarioLayout;
 	QVBoxLayout
 		*principalLayout;
 	QWidget

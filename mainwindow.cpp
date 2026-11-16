@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
 	btnCargarParty = new QPushButton("Cargar Party");
 	btnGuardarParty = new QPushButton("Guardar Party");
 	btnGestionarParty = new QPushButton("Gestionar Party");
+	btnInventario = new QPushButton("Inventario");
+	btnCrearParty = new QPushButton("Crear Party");
 	btnSalir = new QPushButton("Salir");
 
 	tabernaTiendaLayout = new QHBoxLayout();
@@ -24,16 +26,18 @@ MainWindow::MainWindow(QWidget *parent)
 	cargarGuardarLayout = new QHBoxLayout();
 	cargarGuardarLayout->addWidget(btnCargarParty);
 	cargarGuardarLayout->addWidget(btnGuardarParty);
-	gestionarSalirLayout = new QHBoxLayout();
-	gestionarSalirLayout->addWidget(btnGestionarParty);
-	gestionarSalirLayout->addWidget(btnSalir);
+	gestionarEInventarioLayout = new QHBoxLayout();
+	gestionarEInventarioLayout->addWidget(btnGestionarParty);
+	gestionarEInventarioLayout->addWidget(btnInventario);
 
 	principalLayout = new QVBoxLayout();
 	principalLayout->addWidget(lblBienvenida);
 	principalLayout->addLayout(tabernaTiendaLayout);
 	principalLayout->addLayout(editarLayout);
 	principalLayout->addLayout(cargarGuardarLayout);
-	principalLayout->addLayout(gestionarSalirLayout);
+	principalLayout->addLayout(gestionarEInventarioLayout);
+	principalLayout->addWidget(btnCrearParty);
+	principalLayout->addWidget(btnSalir);
 
 	centralWidget = new QWidget;
 
@@ -82,6 +86,16 @@ MainWindow::MainWindow(QWidget *parent)
 			SLOT(slotGestionarParty()));
 
 	/*
+	connect(btnInventario,
+			SIGNAL(clicked()),
+			this,
+			SLOT(slotInventario()));
+
+	connect(btnCrearParty,
+			SIGNAL(clicked()),
+			this,
+			SLOT(slotCrearParty()));
+
 	connect(btnSalir,
 			SIGNAL(clicked()),
 			this,
