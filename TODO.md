@@ -57,7 +57,8 @@
 
 1. Main Structure *should* look *about* the same as this:
 
-```c++
+```cpp
+// playerformwidget.h
 #ifndef _PLAYERFORMWIDGET_H_
 #define _PLAYERFORMWIDGET_H_
 
@@ -97,7 +98,8 @@ public:
 #endif // _PLAYERFORMWIDGET_H_
 ```
 
-```c++
+```cpp
+// playerformwidget.cpp
 #include "playerformwidget.h"
 
 PlayerFormWidget::PlayerFormWidget(QWidget *parent)
