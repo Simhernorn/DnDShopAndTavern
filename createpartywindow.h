@@ -6,13 +6,16 @@
 #include <QPushButton>
 #include <QLayout>
 #include <QFrame>
+#include <QList>
+
+#include "playerformwidget.h"
 
 class CreatePartyWindow : public QDialog
 {
 Q_OBJECT
 
 public:
-	int numberPlayerQuantity;
+	int sbQuantity;
 
 	QSpinBox
 		*sbPlayerQuantity;
@@ -26,8 +29,14 @@ public:
 	QVBoxLayout
 		*layoutPrincipal,
 		*vLayoutFrame;
+	QList<PlayerFormWidget*> pfwList;
+
+	void createPlayerFormWidgets(int);
 
 	CreatePartyWindow(QWidget * parent = nullptr);
+
+public slots:
+	void slotPlayerQuantityChanged(int);
 };
 
 #endif // CREATEPARTYWINDOW_H
